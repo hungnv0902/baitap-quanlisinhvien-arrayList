@@ -1,6 +1,5 @@
 import interFace.MethodManagerStudent;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Comparator;
 import java.util.Collections;
 
@@ -82,14 +81,19 @@ public class ManagerStudent implements MethodManagerStudent<Student> {
                     return 1;
                 } else if (o1.getGpa() == o2.getGpa()) {
                     return 0;
-                } else if (o1.getGpa() > o2.getGpa()) {
+                } else {
                     return -1;
                 }
             }
-            }
+
+
 
         });
 
+        for(Student student : students) {
+            System.out.println(student);
+        }
+    }
 
     }
 
