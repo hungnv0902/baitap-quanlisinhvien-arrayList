@@ -5,5 +5,6 @@ public interface MethodManagerStudent<Student> {
     boolean editStudent(Student student);
     boolean removeStudent(int id);
     void sortStudent();
+    void display();
 
 }

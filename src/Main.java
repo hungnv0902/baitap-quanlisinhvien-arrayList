@@ -14,9 +14,11 @@ public class Main {
                     Student student = inputStudent();
                     int result = managerStudent.addStudent(student);
                     if (result == -1) {
-                        System.out.println("Sinh vien da ton tai");
+                        System.out.println("Trung ID");
                     } else if (result == 1) {
                         System.out.println("Sinh vien da duoc them");
+                    } else if(result == 0) {
+                        System.out.println("Sinh vien da ton tai");
                     }
                     break;
                 }
@@ -48,9 +50,7 @@ public class Main {
                     break;
 
                 case 5:
-                    for (int i = 0; i < managerStudent.count; i ++ ) {
-                        System.out.println("ID: " + managerStudent.students[i].getId() + " | Name: " + managerStudent.students[i].getName()+" | Age: "+managerStudent.students[i].getAge()+" | Address: "+managerStudent.students[i].getAddress()+" | GPA: " + managerStudent.students[i].getGpa() +"\n" );
-                    }
+                    managerStudent.display();
             }
         } while (choice != 0);
 

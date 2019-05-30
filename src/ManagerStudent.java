@@ -10,42 +10,27 @@ public class ManagerStudent implements MethodManagerStudent<Student> {
     public ManagerStudent() {
     }
 
-    public ManagerStudent(ArrayList<Student> students) {
-        this.students = students;
-    }
-
-
-    public ArrayList<Student> getStudents() {
-        return students;
-    }
-
-    public void setStudents(ArrayList<Student> students) {
-        this.students = students;
-    }
-
-    public int getCount() {
-        return count;
-    }
-
-    public void setCount(int count) {
-        this.count = count;
-    }
 
     @Override
     public int addStudent(Student student) {
-        if(students.contains(student)) {
-            return -1;
-        } else {
-            students.add(student);
-            count ++;
-            return 1;
-        }
+       for(Student st : students) {
+           if (st.getId() == student.getId()) {
+               return -1;
+           } else {
+               if((st.getName() == student.getName()) && (st.getGpa() == student.getGpa())
+                       && (st.getAge() == student.getAge()) && (st.getAddress() == student.getAddress())) {
+                   return 0;
+               }
+           }
+       }
+       students.add(student);
+       count ++;
+       return 1;
 
     }
 
     @Override
     public boolean editStudent(Student student) {
-        if(students.contains(student)) {
             for (Student st : students) {
                 if (st.getId() == student.getId()) {
                     st.setAddress(student.getAddress());
@@ -55,7 +40,7 @@ public class ManagerStudent implements MethodManagerStudent<Student> {
                     return true;
                 }
             }
-        }
+
             return false;
     }
 
@@ -78,11 +63,11 @@ public class ManagerStudent implements MethodManagerStudent<Student> {
             @Override
             public int compare(Student o1, Student o2) {
                 if(o1.getGpa() < o2.getGpa()) {
-                    return 1;
+                    return -1;
                 } else if (o1.getGpa() == o2.getGpa()) {
                     return 0;
                 } else {
-                    return -1;
+                    return 1;
                 }
             }
 
@@ -90,10 +75,20 @@ public class ManagerStudent implements MethodManagerStudent<Student> {
 
         });
 
-        for(Student student : students) {
-            System.out.println(student);
+    }
+    @Override
+    public void display() {
+        for (Student student : students) {
+            System.out.println("ID: " + student.getId()
+                                + " | Name: " + student.getName()
+                                +" | Age: " + student.getAge()
+                                +" | Address: "
+                                +student.getAddress()
+                                +" | GPA: "
+                                +student.getGpa()
+                                +"\n");
         }
     }
 
-    }
+}
 
